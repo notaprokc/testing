@@ -5,7 +5,7 @@ fetch('cards.json')
     const cardContainer = document.querySelector('.card-container');
 
     // Generate card elements
-    cards.forEach(card => {
+    cards.forEach((card, index) => {
       const cardElement = document.createElement('div');
       cardElement.classList.add('card');
       cardElement.innerHTML = `
@@ -13,9 +13,10 @@ fetch('cards.json')
         <p>${card.description}</p>
       `;
       cardContainer.appendChild(cardElement);
-    });
 
-    // Activate first card
-    const firstCard = cardContainer.querySelector('.card');
-    firstCard.classList.add('active');
+      // Set the first card as active
+      if (index === 0) {
+        cardElement.classList.add('active');
+      }
+    });
   });
